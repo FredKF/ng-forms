@@ -1,0 +1,10 @@
+<form class="form-group container py-8" (ngSubmit)="onSubmit()">
+    <input class="form-control" required type="text" name="name" placeholder="Name:" [(ngModel)]="product.name" #name="ngModel" minlength="5">
+    {{name.errors | json}}
+    <div class="nameErrors" *ngIf="name.errors && (name.dirty || name.touched)">
+        <div class="alert alert-danger" *ngIf="name.errors.required">Field name is required</div>
+        <div class="alert alert-danger" *ngIf="name.errors.minlength">Field name is too short</div>
+    </div>
+    <input class="form-control" type="number" name="price" placeholder="Price:" [(ngModel)]="product.price" min="0" step="0.01" > 
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
