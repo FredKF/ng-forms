@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
@@ -6,14 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent {
-
-  product = {
-    name:'',
-    price: 0
-  }
   constructor() { }
 
-  onSubmit(): void{
-    console.log(this.product);
+  onSubmit(productForm: NgForm): void{
+    if(productForm.valid)
+    {
+      console.log(productForm.value);
+    }
   }
 }
